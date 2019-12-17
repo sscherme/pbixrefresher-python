@@ -74,7 +74,7 @@ def main():
 		print("Publish")
 		win.Publish.click_input()
 		publish_dialog = win.child_window(auto_id = "KoPublishToGroupDialog")
-		publish_dialog.child_window(title = WORKSPACE).click_input()
+		publish_dialog.child_window(title = "Analytics", found_index=1).click_input()
 		publish_dialog.Select.click()
 		try:
 			win.Replace.wait('visible', timeout = 10)
