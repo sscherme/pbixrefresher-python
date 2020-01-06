@@ -57,10 +57,8 @@ def main():
 
 	# workaround for the bug that clicks do not get recognized
 	os.system('start c:"\"')
-	folderWin = app.window(title_re = "Windows (C:)")
-	folderWin.set_focus()
-	folderWin.Close.click_input()
-	win.set_focus()
+	win.Minimize()
+	win.Restore()
 	win.Save.wait("enabled", timeout = 300)
 	win.wait("enabled", timeout = 300)
 
@@ -77,10 +75,8 @@ def main():
 
 	# workaround for the bug that clicks do not get recognized
 	os.system('start c:"\"')
-	folderWin = app.window(title_re = "Windows (C:)")
-	folderWin.set_focus()
-	folderWin.Close.click_input()
-	win.set_focus()
+	win.Minimize()
+	win.Restore()
 	win.Save.wait("enabled", timeout = 300)
 	win.wait("enabled", timeout = 300)
 
@@ -101,10 +97,8 @@ def main():
 	if args.publish:
 		# workaround for the bug that clicks do not get recognized
 		os.system('start c:"\"')
-		folderWin = app.window(title_re = "Windows (C:)")
-		folderWin.set_focus()
-		folderWin.Close.click_input()
-		win.set_focus()
+		win.Minimize()
+		win.Restore()
 		win.Save.wait("enabled", timeout = 300)
 		win.wait("enabled", timeout = 300)
 
