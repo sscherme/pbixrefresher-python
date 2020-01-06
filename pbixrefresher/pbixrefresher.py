@@ -94,7 +94,7 @@ def main():
 	# Publish
 	if args.publish:
 		# workaround for the bug that clicks do not get recognized
-		os.system("start c:'\'" )
+		os.system('start c:"\"' )
 		win.set_focus()
 		win.Save.wait("enabled", timeout = 300)
 		win.wait("enabled", timeout = 300)
