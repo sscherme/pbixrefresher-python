@@ -54,6 +54,12 @@ def main():
 	win.Save.wait("enabled", timeout = 300)
 	win.wait("enabled", timeout = 300)
 
+	# workaround for the bug that clicks do not get recognized
+	os.system("start c:'\'" )
+	win.set_focus()
+	win.Save.wait("enabled", timeout = 300)
+	win.wait("enabled", timeout = 300)
+
 	# Refresh
 	print("Refreshing")
 	win.Refresh.click_input()
@@ -65,33 +71,38 @@ def main():
 	print("Sleep a little bit after the refresh.")
 	time.sleep(30)
 
+	# workaround for the bug that clicks do not get recognized
+	os.system("start c:'\'" )
+	win.set_focus()
+	win.Save.wait("enabled", timeout = 300)
+	win.wait("enabled", timeout = 300)
+
+	# Save by clicking
+	print("Save by click")
+	win.Save.click_input()
+	win.wait("enabled", timeout = 30)
+	time.sleep(10)
 
 	# Save
-	print("Saving")
-	print("erst alt, dann 1 drücken")
-	type_keys("%", win)
-	#wait_win_ready(win)
-	time.sleep(2)	
-	type_keys("1", win)
-	time.sleep(5)	
-	win.wait("enabled", timeout = REFRESH_TIMEOUT)
-	time.sleep(3)
+	# print("Saving")
+	# type_keys("%1", win)
+	# #wait_win_ready(win)
+	# time.sleep(5)	
+	# win.wait("enabled", timeout = REFRESH_TIMEOUT)
 
 	# Publish
 	if args.publish:
+		# workaround for the bug that clicks do not get recognized
+		os.system("start c:'\'" )
+		win.set_focus()
+		win.Save.wait("enabled", timeout = 300)
+		win.wait("enabled", timeout = 300)
+
 		print("Publish")
 		win.Publish.click_input()
-		try:
-			publish_dialog = win.child_window(auto_id = "KoPublishToGroupDialog")
-			publish_dialog.child_window(title = "Analytics", found_index=1).click_input()
-			publish_dialog.Select.click()
-		except Exception:
-			type_keys({ENTER}, win)
-			win.wait("enabled", timeout = REFRESH_TIMEOUT)
-			time.sleep(3)
-			publish_dialog = win.child_window(auto_id = "KoPublishToGroupDialog")
-			publish_dialog.child_window(title = "Analytics", found_index=1).click_input()
-			publish_dialog.Select.click()
+		publish_dialog = win.child_window(auto_id = "KoPublishToGroupDialog")
+		publish_dialog.child_window(title = "Analytics", found_index=1).click_input()
+		publish_dialog.Select.click()
 
 		try:
 			win.Replace.wait('visible', timeout = 10)
