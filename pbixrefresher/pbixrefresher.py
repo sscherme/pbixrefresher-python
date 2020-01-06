@@ -4,7 +4,9 @@ import sys
 import argparse
 import psutil
 from pywinauto.application import Application
-from pywinauto import timings
+from pywinauto import timings, win32defines
+from pywinauto.win32functions import SetForegroundWindow, ShowWindow
+
 
 
 def type_keys(string, element):
@@ -50,14 +52,17 @@ def main():
 	time.sleep(5)
 	win.wait("enabled", timeout = 300)
 	win.Save.wait("enabled", timeout = 300)
-	win.PowerBIDesktop.set_focus()
+	win.set_focus()
 	win.Home.click_input()
 	win.Save.wait("enabled", timeout = 300)
 	win.wait("enabled", timeout = 300)
 
 	# workaround for the bug that clicks do not get recognized
 	os.system('start c:"\"')
-	win.PowerBIDesktop.set_focus()
+	if win.HasStyle(win32defines.WS_MINIMIZE): # if minimized
+		ShowWindow(win.wrapper_object(), 9) # restore window state
+	else:
+		SetForegroundWindow(win.wrapper_object()) #bring to front
 	win.Save.wait("enabled", timeout = 300)
 	win.wait("enabled", timeout = 300)
 
@@ -74,7 +79,10 @@ def main():
 
 	# workaround for the bug that clicks do not get recognized
 	os.system('start c:"\"')
-	win.PowerBIDesktop.set_focus()
+	if win.HasStyle(win32defines.WS_MINIMIZE): # if minimized
+		ShowWindow(win.wrapper_object(), 9) # restore window state
+	else:
+		SetForegroundWindow(win.wrapper_object()) #bring to front
 	win.Save.wait("enabled", timeout = 300)
 	win.wait("enabled", timeout = 300)
 
@@ -95,7 +103,10 @@ def main():
 	if args.publish:
 		# workaround for the bug that clicks do not get recognized
 		os.system('start c:"\"')
-		win.PowerBIDesktop.set_focus()
+		if win.HasStyle(win32defines.WS_MINIMIZE): # if minimized
+			ShowWindow(win.wrapper_object(), 9) # restore window state
+		else:
+			SetForegroundWindow(win.wrapper_object()) #bring to front
 		win.Save.wait("enabled", timeout = 300)
 		win.wait("enabled", timeout = 300)
 
