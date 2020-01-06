@@ -68,18 +68,31 @@ def main():
 
 	# Save
 	print("Saving")
-	type_keys("%1", win)
+	print("erst alt, dann 1 drücken")
+	type_keys("%", win)
 	#wait_win_ready(win)
-	time.sleep(5)
+	time.sleep(2)	
+	type_keys("1", win)
+	time.sleep(5)	
 	win.wait("enabled", timeout = REFRESH_TIMEOUT)
+	time.sleep(3)
 
 	# Publish
 	if args.publish:
 		print("Publish")
 		win.Publish.click_input()
-		publish_dialog = win.child_window(auto_id = "KoPublishToGroupDialog")
-		publish_dialog.child_window(title = "Analytics", found_index=1).click_input()
-		publish_dialog.Select.click()
+		try:
+			publish_dialog = win.child_window(auto_id = "KoPublishToGroupDialog")
+			publish_dialog.child_window(title = "Analytics", found_index=1).click_input()
+			publish_dialog.Select.click()
+		except Exception:
+			type_keys({ENTER}, win)
+			win.wait("enabled", timeout = REFRESH_TIMEOUT)
+			time.sleep(3)
+			publish_dialog = win.child_window(auto_id = "KoPublishToGroupDialog")
+			publish_dialog.child_window(title = "Analytics", found_index=1).click_input()
+			publish_dialog.Select.click()
+
 		try:
 			win.Replace.wait('visible', timeout = 10)
 		except Exception:
