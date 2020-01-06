@@ -62,6 +62,7 @@ def main():
 	print("Waiting for refresh end (timeout in ", REFRESH_TIMEOUT,"sec)")
 	win.wait("enabled", timeout = REFRESH_TIMEOUT)
 	# Sleep for 30 seconds after the refresh window closes to make sure that Power BI is not occupied and ready for the next step (Sven Schermeng, KI Group, 06.01.2020)
+	print("Sleep a little bit after the refresh.")
 	time.sleep(30)
 
 
