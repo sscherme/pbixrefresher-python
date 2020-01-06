@@ -37,7 +37,7 @@ def main():
 	time.sleep(3)
 
 	# Start PBI and open the workbook
-	print("06.01.2020 16:38")
+	print("06.01.2020 17:52")
 	print("Starting Power BI")
 	os.system('start "" "' + WORKBOOK + '"')
 	print("Waiting ",INIT_WAIT,"sec")
