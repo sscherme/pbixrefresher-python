@@ -37,7 +37,7 @@ def main():
 	time.sleep(3)
 
 	# Start PBI and open the workbook
-	print("06.01.2020 16:38")
+	print("06.01.2020 18:52")
 	print("Starting Power BI")
 	os.system('start "" "' + WORKBOOK + '"')
 	print("Waiting ",INIT_WAIT,"sec")
@@ -55,12 +55,12 @@ def main():
 	win.Save.wait("enabled", timeout = 300)
 	win.wait("enabled", timeout = 300)
 
-	# workaround for the bug that clicks do not get recognized
-	os.system('start c:"\"')
-	win.Minimize()
-	win.Restore()
-	win.Save.wait("enabled", timeout = 300)
-	win.wait("enabled", timeout = 300)
+	# # workaround for the bug that clicks do not get recognized - DOESNT WORK YET
+	# os.system('start c:"\"')
+	# win.Minimize()
+	# win.Restore()
+	# win.Save.wait("enabled", timeout = 300)
+	# win.wait("enabled", timeout = 300)
 
 	# Refresh
 	print("Refreshing")
@@ -72,13 +72,6 @@ def main():
 	# Sleep for 30 seconds after the refresh window closes to make sure that Power BI is not occupied and ready for the next step (Sven Schermeng, KI Group, 06.01.2020)
 	print("Sleep a little bit after the refresh.")
 	time.sleep(30)
-
-	# workaround for the bug that clicks do not get recognized
-	os.system('start c:"\"')
-	win.Minimize()
-	win.Restore()
-	win.Save.wait("enabled", timeout = 300)
-	win.wait("enabled", timeout = 300)
 
 	# Save by clicking
 	print("Save by click")
@@ -95,12 +88,6 @@ def main():
 
 	# Publish
 	if args.publish:
-		# workaround for the bug that clicks do not get recognized
-		os.system('start c:"\"')
-		win.Minimize()
-		win.Restore()
-		win.Save.wait("enabled", timeout = 300)
-		win.wait("enabled", timeout = 300)
 
 		print("Publish")
 		win.Publish.click_input()
