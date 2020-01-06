@@ -50,14 +50,14 @@ def main():
 	time.sleep(5)
 	win.wait("enabled", timeout = 300)
 	win.Save.wait("enabled", timeout = 300)
-	win.set_focus()
+	win.PowerBIDesktop.set_focus()
 	win.Home.click_input()
 	win.Save.wait("enabled", timeout = 300)
 	win.wait("enabled", timeout = 300)
 
 	# workaround for the bug that clicks do not get recognized
 	os.system('start c:"\"')
-	win.set_focus()
+	win.PowerBIDesktop.set_focus()
 	win.Save.wait("enabled", timeout = 300)
 	win.wait("enabled", timeout = 300)
 
@@ -74,7 +74,7 @@ def main():
 
 	# workaround for the bug that clicks do not get recognized
 	os.system('start c:"\"')
-	win.set_focus()
+	win.PowerBIDesktop.set_focus()
 	win.Save.wait("enabled", timeout = 300)
 	win.wait("enabled", timeout = 300)
 
@@ -95,7 +95,7 @@ def main():
 	if args.publish:
 		# workaround for the bug that clicks do not get recognized
 		os.system('start c:"\"')
-		win.set_focus()
+		win.PowerBIDesktop.set_focus()
 		win.Save.wait("enabled", timeout = 300)
 		win.wait("enabled", timeout = 300)
 
