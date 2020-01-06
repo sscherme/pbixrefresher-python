@@ -4,9 +4,7 @@ import sys
 import argparse
 import psutil
 from pywinauto.application import Application
-from pywinauto import timings, win32defines
-from pywinauto.win32functions import SetForegroundWindow, ShowWindow
-
+from pywinauto import timings
 
 
 def type_keys(string, element):
@@ -39,7 +37,7 @@ def main():
 	time.sleep(3)
 
 	# Start PBI and open the workbook
-	print("06.01.2020 17:52")
+	print("06.01.2020 16:38")
 	print("Starting Power BI")
 	os.system('start "" "' + WORKBOOK + '"')
 	print("Waiting ",INIT_WAIT,"sec")
@@ -59,10 +57,10 @@ def main():
 
 	# workaround for the bug that clicks do not get recognized
 	os.system('start c:"\"')
-	if win.HasStyle(win32defines.WS_MINIMIZE): # if minimized
-		ShowWindow(win.wrapper_object(), 9) # restore window state
-	else:
-		SetForegroundWindow(win.wrapper_object()) #bring to front
+	folderWin = app.window(title_re = "Windows (C:)")
+	folderWin.set_focus()
+	folderWin.Close.click_input()
+	win.set_focus()
 	win.Save.wait("enabled", timeout = 300)
 	win.wait("enabled", timeout = 300)
 
@@ -79,10 +77,10 @@ def main():
 
 	# workaround for the bug that clicks do not get recognized
 	os.system('start c:"\"')
-	if win.HasStyle(win32defines.WS_MINIMIZE): # if minimized
-		ShowWindow(win.wrapper_object(), 9) # restore window state
-	else:
-		SetForegroundWindow(win.wrapper_object()) #bring to front
+	folderWin = app.window(title_re = "Windows (C:)")
+	folderWin.set_focus()
+	folderWin.Close.click_input()
+	win.set_focus()
 	win.Save.wait("enabled", timeout = 300)
 	win.wait("enabled", timeout = 300)
 
@@ -103,10 +101,10 @@ def main():
 	if args.publish:
 		# workaround for the bug that clicks do not get recognized
 		os.system('start c:"\"')
-		if win.HasStyle(win32defines.WS_MINIMIZE): # if minimized
-			ShowWindow(win.wrapper_object(), 9) # restore window state
-		else:
-			SetForegroundWindow(win.wrapper_object()) #bring to front
+		folderWin = app.window(title_re = "Windows (C:)")
+		folderWin.set_focus()
+		folderWin.Close.click_input()
+		win.set_focus()
 		win.Save.wait("enabled", timeout = 300)
 		win.wait("enabled", timeout = 300)
 
