@@ -30,7 +30,7 @@ def main():
 	REFRESH_TIMEOUT = args.refresh_timeout
 	WORKSPACECOUNT = args.workspacecount
 
-	
+	print(WORKSPACE)
 	print(WORKSPACECOUNT)
 	
 	# Kill running PBI
