@@ -20,7 +20,6 @@ def main():
 	parser.add_argument("--refresh-timeout", help = "refresh timeout", default = 30000, type = int)
 	parser.add_argument("--no-publish", dest='publish', help="don't publish, just save", default = True, action = 'store_false' )
 	parser.add_argument("--init-wait", help = "initial wait time on startup", default = 15, type = int)
-	parser.add_argument("--workspacecount", help = "which count does workspace have in publish window; count starts at 0", default = 0, type = int)
 	args = parser.parse_args()
 
 	timings.after_clickinput_wait = 1
@@ -28,13 +27,8 @@ def main():
 	WORKSPACE = args.workspace
 	INIT_WAIT = args.init_wait
 	REFRESH_TIMEOUT = args.refresh_timeout
-	WORKSPACECOUNT = args.workspacecount
 
-	print(INIT_WAIT)
-	print(REFRESH_TIMEOUT)
-	print(WORKBOOK)
 	print(WORKSPACE)
-	print(WORKSPACECOUNT)
 	
 	# Kill running PBI
 	PROCNAME = "PBIDesktop.exe"
@@ -100,7 +94,7 @@ def main():
 		print("Publish")
 		win.Publish.click_input()
 		publish_dialog = win.child_window(auto_id = "KoPublishToGroupDialog")
-		publish_dialog.child_window(title = WORKSPACE, found_index = WORKSPACECOUNT).click_input()
+		publish_dialog.child_window(title = WORKSPACE, found_index = 1).click_input()
 		publish_dialog.Select.click()
 
 		try:
