@@ -30,6 +30,9 @@ def main():
 	REFRESH_TIMEOUT = args.refresh_timeout
 	WORKSPACECOUNT = args.workspacecount
 
+	
+	print(WORKSPACECOUNT)
+	
 	# Kill running PBI
 	PROCNAME = "PBIDesktop.exe"
 	for proc in psutil.process_iter():
@@ -94,7 +97,7 @@ def main():
 		print("Publish")
 		win.Publish.click_input()
 		publish_dialog = win.child_window(auto_id = "KoPublishToGroupDialog")
-		publish_dialog.child_window(title = WORKSPACE, found_index=WORKSPACECOUNT).click_input()
+		publish_dialog.child_window(title = WORKSPACE, found_index = 2).click_input()
 		publish_dialog.Select.click()
 
 		try:
