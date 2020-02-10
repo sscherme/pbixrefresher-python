@@ -31,6 +31,9 @@ def main():
 	WORKSPACECOUNT = args.workspacecount
 
 	print("test")
+	print(INIT_WAIT)
+	print(REFRESH_TIMEOUT)
+	print(WORKBOOK)
 	print(WORKSPACE)
 	print(WORKSPACECOUNT)
 	
