@@ -30,6 +30,7 @@ def main():
 	REFRESH_TIMEOUT = args.refresh_timeout
 	WORKSPACECOUNT = args.workspacecount
 
+	print("test")
 	print(WORKSPACE)
 	print(WORKSPACECOUNT)
 	
